@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Database
-  USERS = {
+  @@users = {
     1 => {
       name: 'Hadad',
       age: 23
@@ -11,22 +11,27 @@ class Database
       age: 18
     }
   }.freeze
-  STORIES = {
+  @@stories = {
     1 => {
       title: 'Kidnaping',
       comment: "So perhaps, you've generated some fancy text, and you're content that you can now copy and paste your fancy text in the comments section of funny cat videos, but perhaps you're wondering how it's even possible to change"
     },
     2 => {
-      name: 'Comining soon...',
-      age: "So perhaps, you've generated some fancy text, and you're content that you can now copy and paste your fancy text in the comments section of funny cat videos, but perhaps you're wondering how it's even possible to change"
+      title: 'Comining soon...',
+      comment: "So perhaps, you've generated some fancy text, and you're content that you can now copy and paste your fancy text in the comments section of funny cat videos, but perhaps you're wondering how it's even possible to change"
     }
-  }.freeze
+  }
 
   def self.users
-    USERS
+    @@users
   end
 
   def self.stories
-    STORIES
+    @@stories
+  end
+
+  def self.add_story(story)
+    new_id = @@stories.keys.max + 1
+    @@stories[new_id] = story
   end
 end
